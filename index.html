@@ -15,8 +15,7 @@
   <div class="page-wrap">
     <header class="site-header" role="banner">
       <a class="brand" href="#hero" aria-label="Ir para o início">
-        <span class="brand-mark" aria-hidden="true">◆</span>
-        <span class="brand-text">Portfolio</span>
+        <span class="brand-mark" aria-label="Logo LM">LM</span>
       </a>
       <nav class="site-nav" role="navigation" aria-label="Navegação principal">
         <a href="#projetos">Projetos</a>
@@ -24,6 +23,7 @@
         <a href="#contato">Contato</a>
       </nav>
     </header>
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden>Mensagem enviada com sucesso! Obrigado pelo contato.</div>
 
     <main id="main" class="snap-container" tabindex="-1">
       <!-- Hero Section -->
@@ -40,7 +40,6 @@
             <a class="btn btn-ghost" href="#contato">Contato</a>
           </div>
           <div class="hero-meta reveal">
-            <p>Minha experiência como Técnico de TI, com ênfase em suporte e manutenção, me proporcionou uma visão prática da tecnologia e uma habilidade apurada para diagnosticar e resolver problemas complexos. Paralelamente, minha vivência anterior na área comercial foi fundamental para desenvolver uma comunicação clara, a capacidade de identificar as necessidades reais dos clientes e entender como a tecnologia pode gerar oportunidades de negócio.</p>
             <p>Hoje, busco ativamente minha primeira oportunidade como Desenvolvedor Júnior. Quero unir minha capacidade de comunicação e meu raciocínio lógico de suporte para não apenas codificar, mas para construir soluções eficientes que realmente façam a diferença para o usuário final. Estou pronto para aplicar meu conhecimento técnico e aprimorar continuamente minhas competências dentro de um time de desenvolvimento.</p>
           </div>
         </div>
@@ -132,18 +131,22 @@
             <a class="btn btn-primary" href="https://github.com/Leonardocmartins02" target="_blank" rel="noopener">GitHub</a>
             <a class="btn btn-ghost" href="mailto:leonardocmartins02@hotmail.com">Email</a>
           </div>
-          <form class="contact-form reveal" action="#" method="post" novalidate>
+          <form class="contact-form reveal" action="https://formsubmit.co/leonardocmartins02@hotmail.com" method="POST" novalidate>
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="Novo contato via Portfólio" />
+            <input type="hidden" name="_next" value="https://Leonardocmartins02.github.io/?sent=1" />
+            <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" />
             <div class="form-row">
               <label for="nome">Nome</label>
               <input id="nome" name="nome" type="text" placeholder="Seu nome" autocomplete="name" />
             </div>
             <div class="form-row">
               <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="voce@exemplo.com" autocomplete="email" />
+              <input id="email" name="email" type="email" placeholder="voce@exemplo.com" autocomplete="email" required />
             </div>
             <div class="form-row">
               <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem..."></textarea>
+              <textarea id="mensagem" name="mensagem" rows="4" placeholder="Escreva sua mensagem..." required></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Enviar</button>
           </form>
