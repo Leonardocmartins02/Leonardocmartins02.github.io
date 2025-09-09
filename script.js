@@ -139,4 +139,57 @@
 
   // Formulário: deixar submissão nativa (FormSubmit) sem interceptar
   // A validação mínima já está no HTML com atributos required
+
+  // Feedback pós-envio (toast) quando retornar de _next com ?sent=1
+  (function showToastOnSent() {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('sent') === '1') {
+        const toast = document.getElementById('toast');
+        if (toast) {
+          toast.hidden = false;
+          requestAnimationFrame(() => toast.classList.add('show'));
+          setTimeout(() => {
+            toast.classList.remove('show');
+            setTimeout(() => (toast.hidden = true), 300);
+          }, 4200);
+        }
+        const clean = window.location.pathname + (window.location.hash || '');
+        history.replaceState(null, '', clean);
+      }
+    } catch (_) {
+      // silencioso
+    }
+  })();
+
+  // Envio via WhatsApp: intercepta submissão e redireciona para wa.me
+  (function whatsappSubmit() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nome = document.getElementById('nome')?.value?.trim() || 'Sem nome';
+      const email = document.getElementById('email')?.value?.trim();
+      const mensagem = document.getElementById('mensagem')?.value?.trim();
+
+      if (!email || !mensagem) {
+        form.reportValidity?.();
+        return;
+      }
+
+      const numero = '5516997058705';
+      const texto = [
+        `Olá, Leonardo!`,
+        `Mensagem enviada pelo portfólio:`,
+        ``,
+        `Nome: ${nome}`,
+        `Email: ${email}`,
+        ``,
+        `Mensagem:`,
+        mensagem
+      ].join('\n');
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+      window.open(url, '_blank');
+    });
+  })();
 })();
