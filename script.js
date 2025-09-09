@@ -137,22 +137,6 @@
   resize();
   requestAnimationFrame(step);
 
-  // Formulário: impedir envio real e dar feedback simples
-  const form = $('.contact-form');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const nome = $('#nome')?.value?.trim();
-      const email = $('#email')?.value?.trim();
-      const mensagem = $('#mensagem')?.value?.trim();
-
-      // Validação mínima
-      if (!email || !mensagem) {
-        alert('Por favor, preencha pelo menos Email e Mensagem.');
-        return;
-      }
-      alert('Obrigado! Sua mensagem foi registrada localmente (exemplo).');
-      form.reset();
-    });
-  }
+  // Formulário: deixar submissão nativa (FormSubmit) sem interceptar
+  // A validação mínima já está no HTML com atributos required
 })();
