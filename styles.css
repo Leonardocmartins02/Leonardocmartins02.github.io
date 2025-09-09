@@ -244,6 +244,7 @@ h2, h3 { font-weight: 600; }
 .skill-name { color: var(--text); font-weight: 600; }
 
 /* Contact */
+.section.contact { padding-top: 70px; }
 .contact-grid {
   max-width: var(--maxw);
   margin: 12px auto 0;
@@ -252,7 +253,8 @@ h2, h3 { font-weight: 600; }
   grid-template-columns: repeat(12, 1fr);
   gap: 18px;
 }
-.contact-actions { grid-column: span 12; display: flex; flex-wrap: wrap; gap: 10px; }
+.contact .section-head { margin: 0 auto 10px; }
+.contact-actions { grid-column: span 12; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 .contact-form { grid-column: span 12; display: grid; gap: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
 .form-row { display: grid; gap: 6px; }
 label { font-size: 14px; color: var(--text); }
@@ -305,8 +307,8 @@ input:focus, textarea:focus { border-color: rgba(0,229,255,0.45); box-shadow: 0 
 @media (min-width: 680px) {
   .projects-grid .card { grid-column: span 6; }
   .skills-grid .skill { grid-column: span 3; }
-  .contact-actions { grid-column: span 5; align-content: start; }
-  .contact-form { grid-column: span 7; }
+  .contact-actions { grid-column: span 12; justify-content: center; }
+  .contact-form { grid-column: span 12; }
 }
 
 @media (min-width: 1024px) {
