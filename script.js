@@ -175,7 +175,6 @@
 
   // Formulário: deixar submissão nativa (FormSubmit) sem interceptar
   // A validação mínima já está no HTML com atributos required
-
   // Feedback pós-envio (toast) quando retornar de _next com ?sent=1
   (function showToastOnSent() {
     try {
