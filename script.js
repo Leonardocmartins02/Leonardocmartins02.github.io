@@ -11,6 +11,42 @@
   const yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Tema claro/escuro
+  (function themeToggle() {
+    const btn = document.querySelector('.theme-toggle');
+    const root = document.body;
+    const key = 'theme';
+
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    const saved = localStorage.getItem(key);
+
+    function apply(theme) {
+      if (theme === 'light') {
+        root.setAttribute('data-theme', 'light');
+      } else {
+        root.removeAttribute('data-theme');
+      }
+      if (btn) btn.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+    }
+
+    apply(saved || (prefersLight ? 'light' : 'dark'));
+
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const isLight = root.getAttribute('data-theme') === 'light';
+        const next = isLight ? 'dark' : 'light';
+        apply(next);
+        localStorage.setItem(key, next);
+      });
+    }
+
+    // Se o usuário não tiver salvo, siga o sistema dinamicamente
+    if (!saved && window.matchMedia) {
+      const mq = window.matchMedia('(prefers-color-scheme: light)');
+      mq.addEventListener?.('change', (e) => apply(e.matches ? 'light' : 'dark'));
+    }
+  })();
+
   // Acessibilidade: ao clicar em um link de âncora, move o foco para a seção
   $$('a[href^="#"]').forEach(a => {
     a.addEventListener('click', (e) => {
