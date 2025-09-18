@@ -43,6 +43,3 @@ Sugestões e melhorias são sempre bem-vindas! Sinta-se à vontade para abrir `i
 
 ---
 
-## 📄 Licença
-
-(A definir)
